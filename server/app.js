@@ -71,14 +71,6 @@ app.use("/api", apiRouter);
 // Uncomment the line below to protect API routes with token validation
 // app.use("/api", isValidToken, apiRouter);
 
-// Handle all other routes and serve the index.html file
-if (process.env.NODE_ENV === 'production') {
-  app.use(express.static(path.join(__dirname, '/client/build')));
-  app.get('/*', (req, res) => {
-    res.sendFile(path.join(__dirname, '../client', '/build', 'index.html'));
-  })
-}
-
 // If that above routes didnt work, we 404 them and forward to error handler
 app.use(errorHandlers.notFound);
 
