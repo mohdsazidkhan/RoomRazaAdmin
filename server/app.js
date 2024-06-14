@@ -10,16 +10,11 @@ const authApiRouter = require("./routes/authApi");
 
 const errorHandlers = require("./handlers/errorHandlers");
 
-const { isValidToken } = require("./controllers/authController");
-
 require("dotenv").config({ path: ".env" });
 
 // create our Express app
 const app = express();
 
-// Serve static files from the frontend build directory
-const frontendPath = path.join(__dirname, 'frontend', 'build');
-app.use(express.static(frontendPath));
 
 // Takes the raw requests and turns them into usable properties on req.body
 app.use(bodyParser.json());
@@ -77,9 +72,12 @@ app.use("/api", apiRouter);
 // app.use("/api", isValidToken, apiRouter);
 
 // Handle all other routes and serve the index.html file
-app.get('*', (req, res) => {
-  res.sendFile(path.join(frontendPath, 'index.html'));
-});
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static(path.join(__dirname, '/client/build')));
+  app.get('/*', (req, res) => {
+    res.sendFile(path.join(__dirname, '../client', '/build', 'index.html'));
+  })
+}
 
 // If that above routes didnt work, we 404 them and forward to error handler
 app.use(errorHandlers.notFound);
