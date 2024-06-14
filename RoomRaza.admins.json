@@ -1,0 +1,13 @@
+[{
+  "_id": {
+    "$oid": "666c7a254c4e776c86ff5184"
+  },
+  "removed": false,
+  "enabled": true,
+  "email": "admin@roomraza.com",
+  "password": "$2a$10$CTVL4J/TW1mY0HNjrKc0RuR1eHMklmLL2hHiXoWPivjRKcRiJbgsy",
+  "name": "admin",
+  "surname": "Admin",
+  "createdAt": "2021-05-31T13:20:02.250Z",
+  "isLoggedIn": true
+}]
