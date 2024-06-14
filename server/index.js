@@ -1,4 +1,3 @@
-// Require necessary modules
 const express = require("express");
 const session = require("express-session");
 const MongoStore = require("connect-mongo");
@@ -47,7 +46,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // Session middleware
 app.use(
   session({
-    secret: process.env.SECRET,
+    secret: process.env.SESSION_SECRET, // Provide your session secret here
     key: process.env.KEY,
     resave: false,
     saveUninitialized: false,
@@ -103,9 +102,7 @@ if (process.env.NODE_ENV === 'production') {
     res.sendFile(path.join(__dirname, '../client', '/build', 'index.html'));
   })
 }
-app.get('/api', (req, res) => {
-  res.send('Api Server Running!');
-})
+
 // Error handling
 app.use(errorHandlers.notFound);
 
@@ -123,3 +120,5 @@ const server = app.listen(app.get("port"), () => {
   console.log(`Express running → On PORT : ${server.address().port}`);
 });
 
+// Export the app
+module.exports = app;
