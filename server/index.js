@@ -61,7 +61,6 @@ const PORT = process.env.SERVER_PORT
 const MONGODB_URL = process.env.MONGO_URI
 const routes = require('./routes/routes');
 const path = require('path');
-const fs = require("fs")
 if (process.env.NODE_ENV !== 'production') {
   require('dotenv').config({path: __dirname+'/.env'});
 }
@@ -72,7 +71,6 @@ mongoose.connect(MONGODB_URL, () => {
   console.log("MongoDB Connected Successfully!");
 });
 
-var app = express()
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 app.use(cors())
