@@ -1,43 +1,37 @@
 const express = require("express");
 const bodyParser = require("body-parser");
-const mongoose = require("mongoose");
-const cors = require("cors");
-const path = require("path");
-const dotenv = require("dotenv");
-const routes = require("./routes/routes");
+const apiRouter = require("./routes/api");
+const authApiRouter = require("./routes/authApi");
 const errorHandlers = require("./handlers/errorHandlers");
+const path = require("path");
+const mongoose = require("mongoose");
+require("dotenv").config({ path: ".env" });
 
-dotenv.config({ path: ".env" });
-
+// create our Express app
 const app = express();
-const PORT = process.env.PORT || 3000;
-const MONGODB_URL = process.env.MONGO_URI;
 
-// Middleware
-app.use(bodyParser.urlencoded({ extended: true }));
+// Takes the raw requests and turns them into usable properties on req.body
 app.use(bodyParser.json());
-app.use(cors());
-app.use(express.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
-// MongoDB Connection
-mongoose.connect(MONGODB_URL, {
+mongoose.connect(process.env.DATABASE, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useFindAndModify: false,
   useCreateIndex: true,
-})
-.then(() => {
-  console.log('MongoDB Connected Successfully!');
+}).then(() => {
+  console.log('MongoDB Connected  Successfully!');
 })
 .catch((err) => {
-  console.error('MongoDB Connection Error:', err.message);
+  console.log(err);
 });
 
-// CORS Setup
-app.use(function(req, res, next) {
+// Set up CORS headers
+app.use(function (req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Credentials", "true");
-  res.header("Access-Control-Allow-Methods", "GET, PATCH, PUT, POST, DELETE");
+  res.header("Access-Control-Allow-Methods", "GET,PATCH,PUT,POST,DELETE");
+  res.header("Access-Control-Expose-Headers", "Content-Length");
   res.header(
     "Access-Control-Allow-Headers",
     "Accept, Authorization, token, Content-Type, X-Requested-With, Range"
@@ -49,21 +43,36 @@ app.use(function(req, res, next) {
   }
 });
 
-// API Routes
-app.use("/api", routes);
+// Here our API Routes
+app.use("/api", authApiRouter);
 
-// Serve Static Files
-if (process.env.NODE_ENV === 'production' || process.env.NODE_ENV === 'remote') {
-  app.use(express.static(path.join(__dirname, '../client', 'build')));
+// for development & production don't use this line app.use("/api", apiRouter); , this is just demo login controller
+//app.use("/api", apiRouter);
+
+// Uncomment the line below to protect API routes with token validation
+app.use("/api", apiRouter);
+
+// Handle all other routes and serve the index.html file
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static(path.join(__dirname, '../client/build')));
   app.get('/*', (req, res) => {
-    res.sendFile(path.join(__dirname, '../client', 'build', 'index.html'));
-  });
+    res.sendFile(path.join(__dirname, '../client', '/build', 'index.html'));
+  })
 }
 
-// Error Handlers
+// If that above routes didnt work, we 404 them and forward to error handler
+//app.use(errorHandlers.notFound);
+
+// Otherwise this was a really bad error we didn't expect! Shoot eh
+// if (app.get("env") === "development") {
+//   /* Development Error Handler - Prints stack trace */
+//   app.use(errorHandlers.developmentErrors);
+// }
+
+// Production error handler
 app.use(errorHandlers.productionErrors);
 
-// Start Server
-app.listen(PORT, () => {
-  console.log(`Express server is running on port ${PORT}`);
+app.set("port", process.env.PORT || 80);
+const server = app.listen(app.get("port"), () => {
+  console.log(`Express running → On PORT : ${server.address().port}`);
 });
