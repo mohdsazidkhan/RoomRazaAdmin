@@ -43,13 +43,8 @@ app.use(function (req, res, next) {
   }
 });
 
-// Here our API Routes
+// Here API Routes
 app.use("/api", authApiRouter);
-
-// for development & production don't use this line app.use("/api", apiRouter); , this is just demo login controller
-//app.use("/api", apiRouter);
-
-// Uncomment the line below to protect API routes with token validation
 app.use("/api", apiRouter);
 
 // Handle all other routes and serve the index.html file
