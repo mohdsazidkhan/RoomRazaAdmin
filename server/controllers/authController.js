@@ -66,7 +66,7 @@ exports.login = async (req, res) => {
       return res.status(400).json({ msg: "Not all fields have been entered." });
 
     const admin = await Admin.findOne({ email: email });
-    console.log(admin);
+
     if (!admin)
       return res.status(400).json({
         success: false,
@@ -105,16 +105,14 @@ exports.login = async (req, res) => {
         admin: {
           id: result._id,
           name: result.name,
+          email: result.email, 
           isLoggedIn: result.isLoggedIn,
         },
       },
       message: "Admin Login Successfully!",
     });
   } catch (err) {
-    // res.status(500).json({ success: false, result:null, message: err.message });
-    res
-      .status(500)
-      .json({ success: false, result: null, message: err.message });
+    res.status(500).json({ success: false, result: null, message: err.message });
   }
 };
 

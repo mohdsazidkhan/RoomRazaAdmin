@@ -32,38 +32,50 @@ function Navigation() {
         style={{
           zIndex: 1000,
         }}
-      >
-        <div className="logo"><img src={'./logo.png'} width="150" height="40"/></div>
+      > 
+        {collapsed ?
+        <div className="logo">
+          <img src={'./logo-mobile.png'} width="48" height="48"/>
+        </div>
+        :
+        <div className="logo">
+          <img src={'./logo.png'} width="150" height="40"/>
+        </div>
+        }
         <Menu theme="light" defaultSelectedKeys={["1"]} mode="inline">
           <Menu.Item key="1" icon={<DashboardOutlined />}>
             <Link to="/" />
-            Home Page
+            Dashboard
           </Menu.Item>
-          <Menu.Item key="2" icon={<CustomerServiceOutlined />}>
-            <Link to="/customer">Customer</Link>
+          <Menu.Item key="2" icon={<TeamOutlined />}>
+            <Link to="/customer">Users</Link>
           </Menu.Item>
-          <Menu.Item key="24" icon={<UserOutlined />}>
-            <Link to="/selectcustomer">Select Customer</Link>
+          <Menu.Item key="3" icon={<UserOutlined />}>
+            <Link to="/selectcustomer">Select User</Link>
           </Menu.Item>
-          <Menu.Item key="21" icon={<FileTextOutlined />}>
+          <Menu.Item key="4" icon={<FileTextOutlined />}>
             <Link to="/lead" />
-            Lead
+            Sale Properties
           </Menu.Item>
-          <Menu.Item key="3" icon={<FileSyncOutlined />}>
+          <Menu.Item key="5" icon={<FileTextOutlined />}>
+            <Link to="/lead" />
+            Rent Properties
+          </Menu.Item>
+          <Menu.Item key="6" icon={<FileSyncOutlined />}>
             <Link to="/product" />
-            Product
+            Total Properties
           </Menu.Item>
-          <Menu.Item key="31" icon={<TeamOutlined />}>
+          <Menu.Item key="7" icon={<TeamOutlined />}>
             <Link to="/admin" />
-            Admin Management
+            Admins
           </Menu.Item>
 
-          <Menu.Item key="32" icon={<SettingOutlined />}>
+          <Menu.Item key="8" icon={<SettingOutlined />}>
             <Link to="/settings" />
             Settings
           </Menu.Item>
 
-          <Menu.Item key="32" icon={<UnlockOutlined />} onClick={() => dispatch(logout())}>
+          <Menu.Item key="9" icon={<UnlockOutlined />} onClick={() => dispatch(logout())}>
             Logout
           </Menu.Item>
 

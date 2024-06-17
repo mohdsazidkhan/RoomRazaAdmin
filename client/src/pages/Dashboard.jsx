@@ -142,28 +142,28 @@ export default function Dashboard() {
     <DashboardLayout>
       <Row gutter={[24, 24]}>
         <TopCard
-          title={"Leads"}
+          title={"Sales Properties"}
           tagColor={"cyan"}
-          prefix={"This month"}
-          tagContent={"34 000 $"}
+          prefix={"Total"}
+          tagContent={"6000"}
         />
         <TopCard
-          title={"Order"}
+          title={"Rent Properties"}
           tagColor={"purple"}
-          prefix={"This month"}
-          tagContent={"34 000 $"}
+          prefix={"Total"}
+          tagContent={"3000"}
         />
         <TopCard
-          title={"Payment"}
+          title={"Users"}
           tagColor={"green"}
-          prefix={"This month"}
-          tagContent={"34 000 $"}
+          prefix={"Total"}
+          tagContent={"4000"}
         />
         <TopCard
-          title={"Due Balance"}
+          title={"All Properties"}
           tagColor={"red"}
-          prefix={"Not Paid"}
-          tagContent={"34 000 $"}
+          prefix={"Total"}
+          tagContent={"34000"}
         />
       </Row>
       <div className="space30"></div>
@@ -174,7 +174,7 @@ export default function Dashboard() {
               <Col className="gutter-row" span={8}>
                 <div className="pad15">
                   <h3 style={{ color: "#22075e", marginBottom: 15 }}>
-                    Lead Preview
+                    Rent Property Preview
                   </h3>
                   <PreviewState tag={"Draft"} color={"grey"} value={3} />
                   <PreviewState tag={"Pending"} color={"bleu"} value={5} />
@@ -192,7 +192,7 @@ export default function Dashboard() {
                 {" "}
                 <div className="pad15">
                   <h3 style={{ color: "#22075e", marginBottom: 15 }}>
-                    Quote Preview
+                    Sale Property Preview
                   </h3>
                   <PreviewState tag={"Draft"} color={"grey"} value={3} />
                   <PreviewState tag={"Pending"} color={"bleu"} value={5} />
@@ -210,7 +210,7 @@ export default function Dashboard() {
                 {" "}
                 <div className="pad15">
                   <h3 style={{ color: "#22075e", marginBottom: 15 }}>
-                    Order Preview
+                    Users Preview
                   </h3>
                   <PreviewState tag={"Draft"} color={"grey"} value={3} />
                   <PreviewState tag={"Pending"} color={"bleu"} value={5} />
@@ -235,14 +235,14 @@ export default function Dashboard() {
               style={{ textAlign: "center", justifyContent: "center" }}
             >
               <h3 style={{ color: "#22075e", marginBottom: 30 }}>
-                Customer Preview
+                User Preview
               </h3>
 
               <Progress type="dashboard" percent={25} width={148} />
-              <p>New Customer this Month</p>
+              <p>New User this Month</p>
               <Divider />
               <Statistic
-                title="Active Customer"
+                title="Active Users"
                 value={11.28}
                 precision={2}
                 valueStyle={{ color: "#3f8600" }}
@@ -259,7 +259,7 @@ export default function Dashboard() {
           <div className="whiteBox shadow">
             <div className="pad20">
               <h3 style={{ color: "#22075e", marginBottom: 5 }}>
-                Recent Leads
+                Recent Users
               </h3>
             </div>
 
@@ -271,7 +271,7 @@ export default function Dashboard() {
           <div className="whiteBox shadow">
             <div className="pad20">
               <h3 style={{ color: "#22075e", marginBottom: 5 }}>
-                Recent Products
+                Recent Properties
               </h3>
             </div>
             <RecentTable entity={"product"} dataTableColumns={productColumns} />
