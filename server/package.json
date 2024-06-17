@@ -5,10 +5,9 @@
     "node": "20.x"
   },
   "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon index.js",
-    "start": "node --trace-deprecation index.js",
-    "build": "npm install && npm install --prefix client && npm run build --prefix client",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node index.js"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
@@ -27,8 +26,8 @@
     "nodemon": "^1.19.2"
   },
   "description": "Room Raza Admin in Mern Stack!",
-  "main": "app.js",
-  "keywords": [],
+  "main": "index.js",
+  "keywords": ["node","express","mongodb","admin","roomraza"],
   "author": "MSK",
   "license": "MIT"
 }
