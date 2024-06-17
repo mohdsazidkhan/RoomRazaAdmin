@@ -6,7 +6,7 @@
   },
   "scripts": {
     "dev": "nodemon index.js",
-    "start": "node index.js",
+    "start": "node --trace-deprecation index.js",
     "build": "npm install && npm install --prefix client && npm run build --prefix client",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
