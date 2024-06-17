@@ -3,6 +3,7 @@ const bodyParser = require("body-parser");
 const apiRouter = require("./routes/api");
 const authApiRouter = require("./routes/authApi");
 const errorHandlers = require("./handlers/errorHandlers");
+const path = require("path");
 const mongoose = require("mongoose");
 require("dotenv").config({ path: ".env" });
 
@@ -54,7 +55,7 @@ app.use("/api", apiRouter);
 // Handle all other routes and serve the index.html file
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static(path.join(__dirname, '/client/build')));
-  app.get('/*', (req, res) => {
+  app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, '../client', '/build', 'index.html'));
   })
 }
