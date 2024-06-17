@@ -61,17 +61,16 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 // If that above routes didnt work, we 404 them and forward to error handler
-app.use(errorHandlers.notFound);
+//app.use(errorHandlers.notFound);
 
 // Otherwise this was a really bad error we didn't expect! Shoot eh
-if (app.get("env") === "development") {
-  /* Development Error Handler - Prints stack trace */
-  app.use(errorHandlers.developmentErrors);
-}
+// if (app.get("env") === "development") {
+//   /* Development Error Handler - Prints stack trace */
+//   app.use(errorHandlers.developmentErrors);
+// }
 
 // Production error handler
 app.use(errorHandlers.productionErrors);
-
 
 app.set("port", process.env.PORT || 80);
 const server = app.listen(app.get("port"), () => {
