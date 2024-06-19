@@ -1,7 +1,9 @@
 const express = require("express");
 const bodyParser = require("body-parser");
-const apiRouter = require("./routes/api");
-const authApiRouter = require("./routes/authApi");
+const adminRouter = require("./routes/adminRoutes");
+const listingRouter = require("./routes/listingRoutes");
+const userRouter = require("./routes/userRoutes");
+const authRouter = require("./routes/authRoutes");
 const errorHandlers = require("./handlers/errorHandlers");
 const path = require("path");
 const mongoose = require("mongoose");
@@ -44,8 +46,10 @@ app.use(function (req, res, next) {
 });
 
 // Here API Routes
-app.use("/api", authApiRouter);
-app.use("/api", apiRouter);
+app.use("/api", authRouter);
+app.use("/api", adminRouter);
+app.use("/api", listingRouter);
+app.use("/api", userRouter);
 
 // Handle all other routes and serve the index.html file
 if (process.env.NODE_ENV === 'production') {

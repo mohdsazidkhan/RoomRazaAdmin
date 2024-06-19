@@ -7,7 +7,6 @@ export default function useFetch(fetchingFn) {
 
   const fetchData = async () => {
     setIsLoading(true);
-
     const data = await fetchingFn();
     if (data.success === true) {
       setIsSuccess(true);

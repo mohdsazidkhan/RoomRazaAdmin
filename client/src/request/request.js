@@ -113,10 +113,22 @@ const request = {
       if (option !== {}) {
         let page = option.page ? "page=" + option.page : "";
         let items = option.items ? "&items=" + option.items : "";
-        query = `?${page}${items}`;
+        query = query !== "" ? `?${page}${items}` : "";
       }
-
       const response = await axiosInstance.get(entity + "/list" + query);
+      return successHandler(response);
+    } catch (error) {
+      return errorHandler(error);
+    }
+  },
+
+  users: async (entity) => {
+    axiosInstance.defaults.headers = {
+      [ACCESS_TOKEN_NAME]: tokenCookies.get(),
+    };
+    console.log(tokenCookies.get());
+    try {
+      const response = await axiosInstance.get(entity + "/totalCount");
       return successHandler(response);
     } catch (error) {
       return errorHandler(error);
