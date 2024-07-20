@@ -35,7 +35,7 @@ const LoginPage = () => {
                 margin: "0 auto",
               }}
             >
-              <h1>Login</h1>
+              <h1>Admin Login</h1>
               {/* {error && (
                 <ErrorNotice
                   message={error}
@@ -103,7 +103,6 @@ const LoginPage = () => {
                     >
                       Log in
                     </Button>
-                    Or <a href="">register now!</a>
                   </Form.Item>
                 </Form>
               </div>

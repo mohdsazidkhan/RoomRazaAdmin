@@ -1,7 +1,7 @@
 import React from "react";
 
 import CrudModule from "@/modules/CrudModule";
-import CustomerForm from "@/forms/CustomerForm";
+import CustomerForm from "@/forms/UserForm";
 
 function Customer() {
   const entity = "client";

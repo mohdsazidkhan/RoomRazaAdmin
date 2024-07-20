@@ -1,0 +1,2 @@
+(this["webpackJsonpadmin-roomraza-frontend"]=this["webpackJsonpadmin-roomraza-frontend"]||[]).push([[9],{543:function(e,t,n){"use strict";n.r(t);var r=n(0),a=n(290),o=n(285),s=n(60),i=n(5);t.default=function(){return Object(r.useEffect)((function(){s.a.replace("/notfound")}),[]),Object(i.jsx)(i.Fragment,{children:Object(i.jsx)(a.a,{status:"404",title:"404",subTitle:"Sorry, the page you visited does not exist.",extra:Object(i.jsx)(o.a,{href:"/",type:"primary",children:"Back Home"})})})}}}]);
+//# sourceMappingURL=NotFoundPage.53796723.chunk.js.map

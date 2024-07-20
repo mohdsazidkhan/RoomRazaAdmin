@@ -35,7 +35,7 @@ export const crud = {
     });
 
     let data = await request.list(entity, { page: currentPage });
-
+    console.log(data, ' data')
     if (data.success === true) {
       const result = {
         items: data.result,

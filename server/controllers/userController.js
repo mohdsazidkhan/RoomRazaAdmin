@@ -3,7 +3,7 @@ const User = require('../models/User');
 const { errorHandler } = require('../utils/error');
 const Listing = require('../models/Listing');
 
-exports.getUserList = async(req, res) => {
+exports.getUserListThisMonth = async(req, res) => {
   try {
     const startOfMonth = new Date(new Date().getFullYear(), new Date().getMonth(), 1);
     const endOfMonth = new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0);
@@ -25,6 +25,36 @@ exports.getUserList = async(req, res) => {
     next(error);
   }
 };
+
+exports.getAllUserList = async (req, res, next) => {
+  try {
+    const page = parseInt(req.query.page) || 1;
+    const limit = parseInt(req.query.items) || 10;
+    const skip = (page - 1) * limit;
+
+    const [result, count] = await Promise.all([
+      User.find({})
+        .skip(skip)
+        .limit(limit)
+        .sort({ created: "desc" })
+        .select('-password -avatar'),
+      User.countDocuments() // Changed to countDocuments() to make it awaitable
+    ]);
+
+    const pages = Math.ceil(count / limit);
+    const pagination = { page, pages, count };
+
+    res.status(200).json({
+      success: true,
+      result,
+      pagination,
+      message: "Successfully found Users"
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+
 
 exports.getAllUserCount = async(req, res) => {
   try {

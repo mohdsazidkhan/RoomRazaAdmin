@@ -1,9 +1,8 @@
 import React from "react";
-
 import CustomCrudModule from "@/modules/CustomCrudModule";
-import CustomerForm from "@/forms/UserForm";
+import UserForm from "@/forms/UserForm";
 
-function SelectCustomer() {
+function SelectUser() {
   const entity = "client";
   const searchConfig = {
     displayLabels: ["company", "surname", "name"],
@@ -17,50 +16,54 @@ function SelectCustomer() {
 
   const readColumns = [
     {
-      title: "Company",
-      dataIndex: "company",
+      title: "Full Name",
+      dataIndex: "fullname",
     },
     {
-      title: "Manager Surname",
-      dataIndex: "surname",
+      title: "User Name",
+      dataIndex: "username",
     },
     {
-      title: "Manager Name",
-      dataIndex: "name",
+      title: "Mobile No.",
+      dataIndex: "mobileNo",
     },
     {
       title: "Email",
       dataIndex: "email",
     },
     {
-      title: "Phone",
-      dataIndex: "phone",
+      title: "Created At",
+      dataIndex: "createdAt",
     },
   ];
   const dataTableColumns = [
     {
-      title: "Company",
-      dataIndex: "company",
+      title: "Full Name",
+      dataIndex: "fullname",
     },
     {
-      title: "Manager Surname",
-      dataIndex: "surname",
+      title: "User Name",
+      dataIndex: "username",
     },
     {
-      title: "Manager Name",
-      dataIndex: "name",
+      title: "Mobile No.",
+      dataIndex: "mobileNo",
     },
     {
       title: "Email",
       dataIndex: "email",
     },
+    {
+      title: "Created At",
+      dataIndex: "createdAt",
+    },
   ];
 
-  const ADD_NEW_ENTITY = "Add new customer";
-  const DATATABLE_TITLE = "customers List";
-  const ENTITY_NAME = "customer";
-  const CREATE_ENTITY = "Create customer";
-  const UPDATE_ENTITY = "Update customer";
+  const ADD_NEW_ENTITY = "Add New User";
+  const DATATABLE_TITLE = "Users List";
+  const ENTITY_NAME = "User";
+  const CREATE_ENTITY = "Create User";
+  const UPDATE_ENTITY = "Update User";
   const config = {
     entity,
     panelTitle,
@@ -77,11 +80,11 @@ function SelectCustomer() {
   };
   return (
     <CustomCrudModule
-      createForm={<CustomerForm />}
-      updateForm={<CustomerForm isUpdateForm={true} />}
+      createForm={<UserForm />}
+      updateForm={<UserForm isUpdateForm={true} />}
       config={config}
     />
   );
 }
 
-export default SelectCustomer;
+export default SelectUser;

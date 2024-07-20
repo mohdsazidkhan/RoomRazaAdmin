@@ -52,7 +52,6 @@ export default function SidePanel({
       onCollapse={collapsePanel}
       zeroWidthTriggerStyle={{
         right: "-60px",
-   
       }}
       style={{
         background: "#FFF",
