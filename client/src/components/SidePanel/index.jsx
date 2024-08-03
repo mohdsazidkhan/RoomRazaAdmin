@@ -38,6 +38,8 @@ export default function SidePanel({
     panel.collapse();
   };
 
+  console.log(isPanelCollapsed, ' isPanelCollapsed')
+
   const collapsePanelBox = () => {
     collapsedBox.collapse();
   };
