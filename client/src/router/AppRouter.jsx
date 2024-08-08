@@ -20,9 +20,10 @@ const SelectUser = lazy(() =>
   import(/*webpackChunkName:'SelectUserPage'*/ "@/pages/SelectUser")
 );
 
-const Lead = lazy(() => import(/*webpackChunkName:'LeadPage'*/ "@/pages/Lead"));
-const Product = lazy(() =>
-  import(/*webpackChunkName:'ProductPage'*/ "@/pages/Product")
+const SaleProperties = lazy(() => import(/*webpackChunkName:'SaleProperties'*/ "@/pages/SaleProperties"));
+const RentProperties = lazy(() => import(/*webpackChunkName:'RentProperties'*/ "@/pages/RentProperties"));
+const AllProperties = lazy(() =>
+  import(/*webpackChunkName:'AllProperties'*/ "@/pages/AllProperties")
 );
 
 const Logout = lazy(() =>
@@ -45,10 +46,10 @@ export default function AppRouter() {
             path="/selectuser"
             exact
           />
-          <PrivateRoute component={Lead} path="/lead" exact />
-          <PrivateRoute component={Product} path="/product" exact />
-          <PrivateRoute component={Admin} path="/admin" exact />
-
+          <PrivateRoute component={SaleProperties} path="/sale-properties" exact />
+          <PrivateRoute component={RentProperties} path="/rent-properties" exact />
+          <PrivateRoute component={AllProperties} path="/all-properties" exact />
+          <PrivateRoute component={Admin} path="/admins" exact />
           <PrivateRoute component={Logout} path="/logout" exact />
           <PublicRoute path="/login" render={() => <Redirect to="/" />} />
           <Route

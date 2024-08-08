@@ -51,30 +51,22 @@ function Navigation() {
           <Menu.Item key="2" icon={<TeamOutlined />}>
             <Link to="/users">Users</Link>
           </Menu.Item>
-          <Menu.Item key="3" icon={<UserOutlined />}>
-            <Link to="/selectcustomer">Select User</Link>
-          </Menu.Item>
           <Menu.Item key="4" icon={<FileTextOutlined />}>
-            <Link to="/lead">
+            <Link to="/sale-properties">
               Sale Properties
             </Link>
           </Menu.Item>
           <Menu.Item key="5" icon={<FileTextOutlined />}>
-            <Link to="/lead" >
+            <Link to="/rent-properties" >
               Rent Properties</Link>
           </Menu.Item>
           <Menu.Item key="6" icon={<FileSyncOutlined />}>
-            <Link to="/product" >
-              Total Properties</Link>
+            <Link to="/all-properties" >
+              All Properties</Link>
           </Menu.Item>
           <Menu.Item key="7" icon={<TeamOutlined />}>
-            <Link to="/admin" >
+            <Link to="/admins" >
               Admins</Link>
-          </Menu.Item>
-
-          <Menu.Item key="8" icon={<SettingOutlined />}>
-            <Link to="/settings">
-            Settings</Link>
           </Menu.Item>
 
           <Menu.Item key="9" icon={<UnlockOutlined />} onClick={() => dispatch(logout())}>

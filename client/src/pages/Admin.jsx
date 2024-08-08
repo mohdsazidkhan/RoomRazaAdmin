@@ -26,11 +26,11 @@ export default function Admin() {
     { title: "Surname", dataIndex: "surname" },
     { title: "Email", dataIndex: "email" },
   ];
-  const ADD_NEW_ENTITY = "Add new admin";
+  const ADD_NEW_ENTITY = "Add New Admin";
   const DATATABLE_TITLE = "Admins List";
   const ENTITY_NAME = "admin";
-  const CREATE_ENTITY = "Create admin";
-  const UPDATE_ENTITY = "Update admin";
+  const CREATE_ENTITY = "Create Admin";
+  const UPDATE_ENTITY = "Update Admin";
 
   const config = {
     entity,
