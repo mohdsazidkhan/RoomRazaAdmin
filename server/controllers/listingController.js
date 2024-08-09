@@ -1,6 +1,89 @@
 const Listing = require('../models/Listing');
 const { errorHandler } = require('../utils/error');
 
+exports.getAllProperties = async (req, res, next) => {
+  try {
+    const page = parseInt(req.query.page) || 1;
+    const limit = parseInt(req.query.items) || 10;
+    const skip = (page - 1) * limit;
+
+    const [result, count] = await Promise.all([
+      Listing.find({})
+        .skip(skip)
+        .limit(limit)
+        .sort({ created: "desc" }),
+        Listing.countDocuments() // Changed to countDocuments() to make it awaitable
+    ]);
+
+    const pages = Math.ceil(count / limit);
+    const pagination = { page, pages, count };
+
+    res.status(200).json({
+      success: true,
+      result,
+      pagination,
+      message: "Successfully found Properties"
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+
+exports.getRentProperties = async (req, res, next) => {
+  try {
+    const page = parseInt(req.query.page) || 1;
+    const limit = parseInt(req.query.items) || 10;
+    const skip = (page - 1) * limit;
+
+    const [result, count] = await Promise.all([
+      Listing.find({type: "rent"})
+        .skip(skip)
+        .limit(limit)
+        .sort({ created: "desc" }),
+        Listing.countDocuments() // Changed to countDocuments() to make it awaitable
+    ]);
+
+    const pages = Math.ceil(count / limit);
+    const pagination = { page, pages, count };
+
+    res.status(200).json({
+      success: true,
+      result,
+      pagination,
+      message: "Successfully found Properties"
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+
+exports.getSaleProperties = async (req, res, next) => {
+  try {
+    const page = parseInt(req.query.page) || 1;
+    const limit = parseInt(req.query.items) || 10;
+    const skip = (page - 1) * limit;
+
+    const [result, count] = await Promise.all([
+      Listing.find({type: "sale"})
+        .skip(skip)
+        .limit(limit)
+        .sort({ created: "desc" }),
+        Listing.countDocuments() // Changed to countDocuments() to make it awaitable
+    ]);
+
+    const pages = Math.ceil(count / limit);
+    const pagination = { page, pages, count };
+
+    res.status(200).json({
+      success: true,
+      result,
+      pagination,
+      message: "Successfully found Properties"
+    });
+  } catch (error) {
+    next(error);
+  }
+};
 
 exports.getAllListingCount = async(req, res) => {
   try {

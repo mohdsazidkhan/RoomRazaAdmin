@@ -1,7 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Row, Col } from "antd";
 import { useSelector } from "react-redux";
-
 import { useCrudContext } from "@/context/crud";
 import { selectCurrentItem } from "@/redux/crud/selectors";
 import { valueByString } from "@/utils/helpers";
@@ -51,6 +50,6 @@ export default function ReadItem({ config }) {
     );
   });
 
-  console.log("itemsList :", itemsList);
+  //console.log("itemsList :", itemsList);
   return <div style={show}>{itemsList}</div>;
 }

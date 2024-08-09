@@ -1,68 +1,177 @@
 import React from "react";
-
+import { Tag } from "antd";
 import CrudModule from "@/modules/CrudModule";
 import PropertyForm from "@/forms/PropertyForm";
 
 function RentProperties() {
-  const entity = "lead";
+  const entity = "/property/rent";
   const searchConfig = {
-    displayLabels: ["client"],
-    searchFields: "client,email,phone",
+    displayLabels: ["Property Name"],
+    searchFields: "name",
     outputValue: "_id",
   };
 
+  const formatDate = (dateString) => {
+    const date = new Date(dateString);
+    const day = date.getDate();
+    const month = date.toLocaleString('default', { month: 'long' });
+    const year = date.getFullYear();
+    return `${day} ${month} ${year}`;
+  };
+
+  const formatTime = (dateString) => {
+    const date = new Date(dateString);
+    let hours = date.getHours();
+    const minutes = date.getMinutes();
+    const ampm = hours >= 12 ? 'PM' : 'AM';
+    hours = hours % 12;
+    hours = hours ? hours : 12; // the hour '0' should be '12'
+    const formattedMinutes = minutes < 10 ? '0' + minutes : minutes;
+    return `${hours}:${formattedMinutes} ${ampm}`;
+  };
+
   const panelTitle = "Rent Properties Panel";
-  const dataTableTitle = "Rent Properties Lists";
-  const entityDisplayLabels = ["client"];
+  const dataTableTitle = "Rent Properties List";
+  const entityDisplayLabels = ["name"];
 
   const readColumns = [
     {
-      title: "Date",
-      dataIndex: "date",
+      title: "Property Name",
+      dataIndex: "name",
+      render: (_, record) =>{
+        return (
+          <span>{record.name.length > 20 ? record.name.substring(0, 20)+"..." : record.name}</span>
+        )
+      }
     },
     {
-      title: "Client",
-      dataIndex: "client",
+      title: "Address",
+      dataIndex: "address",
+      render: (_, record) =>{
+        return (
+          <span>{record.address.length > 20 ? record.address.substring(0, 20)+"..." : record.address}</span>
+        )
+      }
     },
     {
-      title: "phone",
-      dataIndex: "phone",
+      title: "Regular Price",
+      dataIndex: "regularPrice",
     },
     {
-      title: "email",
-      dataIndex: "email",
-    },
-
-    {
-      title: "Budget",
-      dataIndex: "budget",
+      title: "Discount Price",
+      dataIndex: "discountPrice",
     },
     {
-      title: "Status",
-      dataIndex: "status",
+      title: "Security Deposit",
+      dataIndex: "securityDeposit",
     },
     {
-      title: "Request",
-      dataIndex: "request",
+      title: "Type",
+      dataIndex: "type",
+      render: (_, record) => {
+        let tagColor;
+        if(record.type === "rent"){
+          tagColor = "red"
+        }else{
+          tagColor = "green"
+        }
+        return (
+          <Tag
+            color={tagColor}
+            style={{ margin: "0 auto", justifyContent: "center" }}
+          >
+            {record.type}
+          </Tag>
+        )
+      }
+    },
+    {
+      title: "Created Date",
+      dataIndex: "createdAt",
+      render: (_, record) =>{
+        return (
+          <>{formatDate(record.createdAt)}</>
+        )
+      }
+    },
+    {
+      title: "Created Time",
+      dataIndex: "createdAt",
+      render: (_, record) =>{
+        return (
+          <>{formatTime(record.createdAt)}</>
+        )
+      }
     },
   ];
   const dataTableColumns = [
     {
-      title: "Date",
-      dataIndex: "date",
+      title: "Property Name",
+      dataIndex: "name",
+      render: (_, record) =>{
+        return (
+          <span>{record.name.length > 20 ? record.name.substring(0, 20)+"..." : record.name}</span>
+        )
+      }
     },
     {
-      title: "Client",
-      dataIndex: "client",
+      title: "Address",
+      dataIndex: "address",
+      render: (_, record) =>{
+        return (
+          <span>{record.address.length > 20 ? record.address.substring(0, 20) : record.address}</span>
+        )
+      }
     },
     {
-      title: "phone",
-      dataIndex: "phone",
+      title: "Regular Price",
+      dataIndex: "regularPrice",
     },
-
     {
-      title: "Budget",
-      dataIndex: "budget",
+      title: "Discount Price",
+      dataIndex: "discountPrice",
+    },
+    {
+      title: "Security Deposit",
+      dataIndex: "securityDeposit",
+    },
+    {
+      title: "Type",
+      dataIndex: "type",
+      render: (_, record) => {
+        let tagColor;
+        if(record.type === "rent"){
+          tagColor = "red"
+        }else{
+          tagColor = "green"
+        }
+        return (
+          <Tag
+            color={tagColor}
+            style={{ margin: "0 auto", justifyContent: "center", textTransform: "uppercase" }}
+          >
+            {record.type}
+          </Tag>
+        )
+      }
+    },
+    {
+      title: "Created Date",
+      dataIndex: "createdAt",
+      render: (_, record) =>{
+        return (
+          <>{formatDate(record.createdAt)}</>
+        )
+      }
+    },
+    {
+      title: "Created Time",
+      dataIndex: "createdAt",
+      render: (_, record) =>{
+        return (
+          <>{formatTime(record.createdAt)}</>
+        )
+      }
     },
   ];
 
