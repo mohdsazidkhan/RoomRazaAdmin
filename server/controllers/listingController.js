@@ -11,7 +11,7 @@ exports.getAllProperties = async (req, res, next) => {
       Listing.find({})
         .skip(skip)
         .limit(limit)
-        .sort({ created: "desc" }),
+        .sort({ createdAt: "desc" }),
         Listing.countDocuments() // Changed to countDocuments() to make it awaitable
     ]);
 
@@ -39,7 +39,7 @@ exports.getRentProperties = async (req, res, next) => {
       Listing.find({type: "rent"})
         .skip(skip)
         .limit(limit)
-        .sort({ created: "desc" }),
+        .sort({ createdAt: "desc" }),
         Listing.countDocuments() // Changed to countDocuments() to make it awaitable
     ]);
 
@@ -67,7 +67,7 @@ exports.getSaleProperties = async (req, res, next) => {
       Listing.find({type: "sale"})
         .skip(skip)
         .limit(limit)
-        .sort({ created: "desc" }),
+        .sort({ createdAt: "desc" }),
         Listing.countDocuments() // Changed to countDocuments() to make it awaitable
     ]);
 

@@ -36,7 +36,7 @@ exports.getAllUserList = async (req, res, next) => {
       User.find({})
         .skip(skip)
         .limit(limit)
-        .sort({ created: "desc" })
+        .sort({ createdAt: "desc" })
         .select('-password -avatar'),
       User.countDocuments() // Changed to countDocuments() to make it awaitable
     ]);
