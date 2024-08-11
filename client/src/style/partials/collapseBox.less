@@ -2,10 +2,14 @@
 .panelBox * {
   transition: all 0.3s ease;
 }
+.panelBox .collapseBox,
+.TopCollapseBox{
+  border-right: 1px solid #ccc;
+}
 .collapseBoxHeader {
   width: 100%;
-  padding: 17px 30px;
-  margin-bottom: 20px;
+  padding: 10px;
+  margin-bottom: 10px;
   text-align: center;
   font-size: 14px;
   text-transform: uppercase;
@@ -17,18 +21,18 @@
 
 .box {
   width: 100%;
-  padding: 20px;
+  padding: 10px 15px 0 15px;
 }
 .BottomCollapseBox,
 .TopCollapseBox {
-  padding: 20px;
+  padding: 15px;
   opacity: 1;
 }
 .TopCollapseBox {
   min-height: 450px;
 }
 .collapseBox {
-  margin-top: -400px;
+  margin-top: -430px;
   position: relative;
 
   background: #fff;

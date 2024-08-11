@@ -38,7 +38,7 @@ function FixHeaderPanel({ config }) {
     <div className="box">
       <Row gutter={12}>
         <Col className="gutter-row" span={21}>
-          <h1 style={{ fontSize: 20, marginBottom: 20 }}>
+          <h1 style={{ fontSize: 20, marginBottom: 10 }}>
             {config.panelTitle}
           </h1>
         </Col>
@@ -50,7 +50,7 @@ function FixHeaderPanel({ config }) {
         <Col className="gutter-row" span={3}>
           <Button
             onClick={addNewItem}
-            block={true}
+            block={false}
             icon={<PlusOutlined />}
           ></Button>
         </Col>

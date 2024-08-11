@@ -6,75 +6,168 @@ export default function LeadForm({ isUpdateForm = false }) {
   return (
     <>
       <Form.Item
-        label="Client"
-        name="client"
+        label="Property Name"
+        name="name"
         rules={[
           {
             required: true,
-            message: "Please input your client name!",
+            message: "Enter Property Name!",
           },
         ]}
       >
         <Input />
       </Form.Item>
       <Form.Item
-        name="phone"
-        label="Phone"
+        label="Address"
+        name="address"
         rules={[
           {
             required: true,
-            message: "Please input your phone!",
+            message: "Enter Address!",
           },
         ]}
       >
         <Input />
       </Form.Item>
       <Form.Item
-        name="email"
-        label="E-mail"
+        label="Description"
+        name="description"
         rules={[
           {
-            type: "email",
-            message: "The input is not valid E-mail!",
-          },
-          {
             required: true,
-            message: "Please input your E-mail!",
+            message: "Enter Description!",
           },
         ]}
       >
         <Input />
       </Form.Item>
       <Form.Item
-        label="Date"
-        name="date"
+        label="Regular Price (₹)"
+        name="regularPrice"
         rules={[
           {
             required: true,
-            message: "Please input date!",
-          },
-        ]}
-      >
-        <DatePicker format={"DD/MM/YYYY"} />
-      </Form.Item>
-      <Form.Item
-        label="Budget"
-        name="budget"
-        rules={[
-          {
-            required: true,
-            message: "Please input your budget!",
+            message: "Enter Regular Price!",
           },
         ]}
       >
         <Input />
       </Form.Item>
       <Form.Item
-        label="request"
-        name="request"
+        label="Discount Price (₹)"
+        name="discountPrice"
         rules={[
           {
             required: true,
+            message: "Enter Discount Price!",
+          },
+        ]}
+      >
+        <Input />
+      </Form.Item>
+      <Form.Item
+        label="Security Deposit (₹)"
+        name="securityDeposit"
+        rules={[
+          {
+            required: true,
+            message: "Enter Security Deposit!",
+          },
+        ]}
+      >
+        <Input />
+      </Form.Item>
+      <Form.Item
+        label="Type"
+        name="type"
+        rules={[
+          {
+            required: true,
+            message: "Enter Type!",
+          },
+        ]}
+      >
+        <Input />
+      </Form.Item>
+      <Form.Item
+        label="Bedrooms"
+        name="bedrooms"
+        rules={[
+          {
+            required: true,
+            message: "Enter Bedrooms!",
+          },
+        ]}
+      >
+        <Input />
+      </Form.Item>
+      <Form.Item
+        label="Furnished Type"
+        name="furnishedType"
+        rules={[
+          {
+            required: true,
+            message: "Enter Furnished Type!",
+          },
+        ]}
+      >
+        <Input />
+      </Form.Item>
+      <Form.Item
+        label="Balconies"
+        name="balconies"
+        rules={[
+          {
+            required: true,
+            message: "Enter Balconies!",
+          },
+        ]}
+      >
+        <Input />
+      </Form.Item>
+      <Form.Item
+        label="Bathrooms"
+        name="bathrooms"
+        rules={[
+          {
+            required: true,
+            message: "Enter Bathrooms!",
+          },
+        ]}
+      >
+        <Input />
+      </Form.Item>
+      <Form.Item
+        label="Age (in years)"
+        name="age"
+        rules={[
+          {
+            required: true,
+            message: "Enter Age!",
+          },
+        ]}
+      >
+        <Input />
+      </Form.Item>
+      <Form.Item
+        label="Area (in Sqft.)"
+        name="area"
+        rules={[
+          {
+            required: true,
+            message: "Enter Property Area!",
+          },
+        ]}
+      >
+        <Input />
+      </Form.Item>
+      <Form.Item
+        label="Floors"
+        name="floor"
+        rules={[
+          {
+            required: true,
+            message: "Enter Floors!",
           },
         ]}
       >

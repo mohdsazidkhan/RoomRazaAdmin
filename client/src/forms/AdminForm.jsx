@@ -4,6 +4,28 @@ import { Form, Input, Select } from "antd";
 export default function AdminForm({ isUpdateForm = false }) {
   return (
     <>
+    <Form.Item
+        label="Name"
+        name="name"
+        rules={[
+          {
+            required: true,
+          },
+        ]}
+      >
+        <Input autoComplete="off" />
+      </Form.Item>
+      <Form.Item
+        label="Surname"
+        name="surname"
+        rules={[
+          {
+            required: true,
+          },
+        ]}
+      >
+        <Input autoComplete="off" />
+      </Form.Item>
       <Form.Item
         label="E-mail"
         name="email"
@@ -31,28 +53,7 @@ export default function AdminForm({ isUpdateForm = false }) {
         </Form.Item>
       )}
 
-      <Form.Item
-        label="name"
-        name="name"
-        rules={[
-          {
-            required: true,
-          },
-        ]}
-      >
-        <Input autoComplete="off" />
-      </Form.Item>
-      <Form.Item
-        label="surname"
-        name="surname"
-        rules={[
-          {
-            required: true,
-          },
-        ]}
-      >
-        <Input autoComplete="off" />
-      </Form.Item>
+      
     </>
   );
 }

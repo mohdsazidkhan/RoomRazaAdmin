@@ -5,59 +5,37 @@ export default function UserForm({ isUpdateForm = false }) {
   return (
     <>
       <Form.Item
-        label="company Name"
-        name="company"
+        label="Full Name"
+        name="fullname"
         rules={[
           {
             required: true,
-            message: "Please input your company name!",
+            message: "Enter Full Name!",
           },
         ]}
       >
         <Input />
       </Form.Item>
       <Form.Item
-        label="Surname"
-        name="surname"
+        label="User Name"
+        name="username"
         rules={[
           {
             required: true,
-            message: "Please input your surname!",
+            message: "Enter User Name!",
           },
         ]}
-        style={{
-          display: "inline-block",
-          width: "calc(50%)",
-          paddingRight: "5px",
-        }}
-      >
-        <Input />
-      </Form.Item>
-      <Form.Item
-        label="Name"
-        name="name"
-        rules={[
-          {
-            required: true,
-            message: "Please input your manager name!",
-          },
-        ]}
-        style={{
-          display: "inline-block",
-          width: "calc(50%)",
-          paddingLeft: "5px",
-        }}
       >
         <Input />
       </Form.Item>
 
       <Form.Item
-        name="phone"
-        label="Phone"
+        name="mobileNo"
+        label="Mobile No."
         rules={[
           {
             required: true,
-            message: "Please input your phone!",
+            message: "Enter Mobile No!",
           },
         ]}
       >

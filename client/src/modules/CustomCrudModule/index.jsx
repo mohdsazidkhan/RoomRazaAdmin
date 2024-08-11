@@ -48,7 +48,7 @@ function FixHeaderPanel({ config }) {
         <Col className="gutter-row" span={3}>
           <Button
             onClick={addNewItem}
-            block={true}
+            block={false}
             icon={<PlusOutlined />}
           ></Button>
         </Col>

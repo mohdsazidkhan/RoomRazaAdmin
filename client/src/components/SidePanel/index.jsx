@@ -21,7 +21,7 @@ export default function SidePanel({
 
   useEffect(() => {
     if (isPanelCollapsed) {
-      setStyleSider("-400px");
+      setStyleSider("-280px");
       setOpacitySider(0);
     } else {
       setStyleSider("0px");
@@ -47,7 +47,7 @@ export default function SidePanel({
   return (
     <Sider
       trigger={<MenuOutlined className="trigger" />}
-      width={400}
+      width={280}
       collapsible
       collapsed={isPanelCollapsed}
       collapsedWidth={"0px"}
